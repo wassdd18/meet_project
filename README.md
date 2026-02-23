@@ -27,7 +27,7 @@
 
 **BiConnect** is a professional **React Native (Expo)** educational template designed to accelerate development of multilingual mobile applications.
 
-Developed as part of the **MEET – Middle East Entrepreneurs of Tomorrow** program, it helps bridge communication gaps between English, Arabic, and Hebrew speakers.
+Developed as part of the **MEET – Middle East Entrepreneurs of Tomorrow** program, it helps bridge communication gaps between Arabic, and Hebrew speakers.
 
 ### 🎯 What This Template Demonstrates
 
@@ -66,7 +66,7 @@ Powered by **Hugging Face GPT-OSS-20B**
 
 Capabilities:
 
-- Text translation (Arabic ↔ Hebrew + 8+ languages)
+- Text translation (Arabic ↔ Hebrew and english)
 - Concept explanation (simple or detailed)
 - Automatic language detection
 - RTL-optimized prompts
@@ -174,7 +174,7 @@ Architecture principles:
 - Node.js (v18+)
 - Git
 - Expo CLI
-- iOS Simulator / Android Emulator / Expo Go
+- Expo Go
 
 ---
 
@@ -182,10 +182,10 @@ Architecture principles:
 
 ```bash
 # Clone repository
-git clone https://github.com/your-username/BiConnect.git
+git clone https://github.com/wassdd18/meet_project
 
 # Navigate into project
-cd BiConnect
+cd lab_1_2
 
 # Install dependencies
 npm install
