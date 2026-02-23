@@ -1,212 +1,268 @@
-# BiConnect – Educational Platform with AI Translation & Concept Explanation
-🔥 ** Why BiConnect is the perfect template for multilingual educational apps — explore our features! ** 📑
+# 🌍 BiConnect  
+### AI-Powered Multilingual Educational Platform (React Native + Expo)
 
+> 🚀 Production-ready template for building multilingual educational apps with built-in AI translation and concept explanation.
 
 ---
-## Table of Contents
+
+## 📑 Table of Contents
 
 - [About](#about)
-- [Features](#features)
-- [How to Install & Run](#how-to-install--run)
+- [Core Features](#core-features)
+  - [Authentication & User Management](#authentication--user-management)
+  - [Multilingual AI Assistant](#multilingual-ai-assistant)
+  - [Reusable UI Components](#reusable-ui-components)
 - [AI Integration](#ai-integration)
-- [Database & Authentication](#database--authentication)
+- [Authentication & Database](#authentication--database)
+- [Project Architecture](#project-architecture)
+- [Installation & Running](#installation--running)
 - [Documentation](#documentation)
-- [Future Roadmap](#future-roadmap)
-- [Feedback and Contributions](#feedback-and-contributions)
-- [Contacts](#contacts)
-
-
----
-## 🚀 About
-
-BiConnect is a comprehensive **React Native (Expo)** template designed to jump‑start educational mobile applications with built‑in **AI‑powered translation** and **concept explanation**. It was developed as part of the **MEET program** (Middle East Entrepreneurs of Tomorrow) to serve as a reusable foundation for students and developers building apps that bridge language barriers — especially between English, Arabic, and Hebrew.
-
-The project demonstrates:
-
-- **Clean, modular architecture** with reusable UI components
-- **Custom React hooks** for authentication and AI services
-- **Integration with Hugging Face’s GPT‑OSS** for translation and explanation
-- **Local secure storage** via `expo-secure-store` (acting as a lightweight database)
-- **Complete authentication flow** (register, login, logout, profile update)
-- **Full support for right‑to‑left (RTL) languages** (Arabic, Hebrew) and multi‑language UI
-
-This template is ideal for anyone who wants to build an educational app with language learning, cross‑cultural communication, or AI‑enhanced tutoring features.
-
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [Contact](#contact)
 
 ---
-## ✨ Features
 
-### 🔐 Authentication & User Management
-- Register with email, password, name, country, and preferred language
-- Login with “remember me” option
-- Session persistence using `expo-secure-store`
-- Profile update (name, country, language)
-- Graceful error handling and loading states
+## About
 
-### 🌐 Multilingual AI Assistant (Powered by Hugging Face)
-- Translate text between Arabic and Hebrew
-- Explain any concept in simple or detailed language
-- Automatic language detection for input text
-- Specially crafted prompts for accurate RTL language handling
+**BiConnect** is a professional **React Native (Expo)** educational template designed to accelerate development of multilingual mobile applications.
 
-### 🧩 Reusable UI Components
-- **ThemedButton** – customizable button (primary/secondary/outline, sizes)
-- **ThemedText** – text styles (title, subtitle, default, link)
-- **ThemedView** – themed container with background
-- **Card** – consistent card layout with shadow
-- **InputField** – styled text input
-- And more: `Collapsible`, `IconSymbol`, `ParallaxScrollView`…
+Developed as part of the **MEET – Middle East Entrepreneurs of Tomorrow** program, it helps bridge communication gaps between English, Arabic, and Hebrew speakers.
 
-### 🗂️ Clean Project Structure
+### 🎯 What This Template Demonstrates
 
+- Clean modular architecture
+- Reusable UI component system
+- Custom React hooks
+- AI-powered translation & explanation
+- Secure local persistence
+- Full RTL (Right-To-Left) language support
+
+Ideal for:
+
+- Language learning applications  
+- AI tutoring platforms  
+- Cross-cultural communication apps  
+- Educational startups  
+
+---
+
+## Core Features
+
+### Authentication & User Management
+
+- Email/password registration
+- Login with “Remember Me”
+- Persistent sessions via `expo-secure-store`
+- Profile editing (name, country, language)
+- Centralized authentication logic (`useAuth`)
+- Structured loading & error states
+
+---
+
+### Multilingual AI Assistant
+
+Powered by **Hugging Face GPT-OSS-20B**
+
+Capabilities:
+
+- Text translation (Arabic ↔ Hebrew + 8+ languages)
+- Concept explanation (simple or detailed)
+- Automatic language detection
+- RTL-optimized prompts
+- Built-in API error handling
+
+---
+
+### Reusable UI Components
+
+Professional design system including:
+
+- `ThemedButton`
+- `ThemedText`
+- `ThemedView`
+- `Card`
+- `InputField`
+- `Collapsible`
+- `IconSymbol`
+- `ParallaxScrollView`
+
+All components are modular and production-ready.
+
+---
+
+## AI Integration
+
+BiConnect integrates with the **Hugging Face Inference API**.
+
+### File Structure
+
+```
+/hooks/use-gptoss.js
+/api/gptoss.js
+```
+
+### Exposed Methods
+
+```js
+translateText(text, fromLang, toLang)
+explainConcept(concept, language, level)
+detectLanguage(text)
+testConnection()
+```
+
+### Design Principles
+
+- Educationally optimized prompts
+- Language detection before translation
+- Graceful API failure handling
+- Easily replaceable AI provider
+
+---
+
+## Authentication & Database
+
+Current implementation includes:
+
+- Local secure persistence via `expo-secure-store`
+- Mock database layer (`hooks/lib/auth.js`)
+- Centralized logic via `useAuth`
+
+### Authentication Flow
+
+1. App launches → Load user from SecureStore
+2. Registration → Save to mock DB + SecureStore
+3. Login → Validate credentials
+4. Profile update → Sync changes
+5. Logout → Clear local session
+
+This structure allows seamless migration to:
+
+- Firebase
+- Appwrite
+- Supabase
+- Custom backend
+
+---
+
+## Project Architecture
+
+```
+BiConnect/
+│
 ├── app/                 # Expo Router screens
-├── components/ui/       # Reusable UI elements
-├── hooks/               # Custom hooks (auth, GPT‑OSS, theme, etc.)
-├── constants/           # Theme colors, fonts
-├── api/                 # GPT‑OSS API client
+├── components/ui/       # Reusable UI components
+├── hooks/               # Custom hooks (auth, AI, theme)
+├── constants/           # Theme configuration
+├── api/                 # AI API client
 └── ...
-### 🛡️ Security & Data Persistence
-- User credentials and metadata stored securely in device keychain via `expo-secure-store`
-- Mocked database layer (`hooks/lib/auth.js`) for easy replacement with real backend (Appwrite, Firebase, etc.)
+```
 
+Architecture principles:
+
+- Separation of concerns
+- Hook-based state management
+- UI decoupled from logic
+- Backend-ready scalability
 
 ---
-## 📝 How to Install & Run
+
+## Installation & Running
 
 ### Prerequisites
-- **Node.js** (v18 or newer)
-- **Git**
-- **Expo CLI**
-- iOS Simulator (macOS only) or Android Emulator, or physical device with Expo Go app
 
-### Installation Steps
+- Node.js (v18+)
+- Git
+- Expo CLI
+- iOS Simulator / Android Emulator / Expo Go
 
-# 1. Clone the repository
+---
+
+### Setup
+
+```bash
+# Clone repository
 git clone https://github.com/your-username/BiConnect.git
 
-# 2. Navigate into the project folder
+# Navigate into project
 cd BiConnect
 
-# 3. Install dependencies
+# Install dependencies
 npm install
 # or
 yarn install
 
-# 4. Start the Expo development server
+# Start development server
 npx expo start
+```
 
-Running on device/emulator
-Press i to open iOS simulator (macOS)
+---
 
-Press a to open Android emulator
+### Running the App
 
-Scan QR code with Expo Go app on your physical device
+- Press `i` → iOS Simulator  
+- Press `a` → Android Emulator  
+- Scan QR code with Expo Go  
 
-> Note: The app uses a Hugging Face API token (included for demo purposes). For production, replace it with your own token in api/gptoss.js.
+> ⚠️ For production use, replace the Hugging Face API token inside `api/gptoss.js`.
 
+---
 
-------------------------------------------------------------------------------------------------------
-🧠 AI Integration
-BiConnect leverages the Hugging Face Inference API (GPT‑OSS‑20B model) to provide:
+## Documentation
 
-Translation – accurate, context‑aware translation between 8+ languages.
+Planned documentation includes:
 
-Concept Explanation – generates simple or detailed explanations suitable for students.
+- Getting Started Guide
+- Hooks API Reference
+- UI Component Catalog
+- AI Prompt Customization Guide
 
-The AI service is encapsulated in the custom hook useGPToss (located in hooks/use-gptoss.js), which exposes:
+(Insert documentation site link here when available)
 
-translateText(text, fromLang, toLang)
+---
 
-explainConcept(concept, language, level)
+## Roadmap
 
-detectLanguage(text)
+### Version 2.0
 
-testConnection()
+- [x] Offline caching  
+- [ ] User history  
+- [ ] Text-to-speech  
+- [x] Real backend adapter  
 
-Error handling is built‑in, with user‑friendly alerts when the API fails.
+### Version 3.0
 
+- [ ] Multi-model AI provider switch
+- [ ] AI-generated quizzes
+- [ ] Collaborative features
 
-------------------------------------------------------------------------------------------------------
-🗄️ Database & Authentication
-While the project uses expo-secure-store for local storage, it is designed to be easily upgraded to a real backend like Appwrite or Firebase.
+---
 
-Current Data Layer
-Mock database (hooks/lib/auth.js) simulates user records and CRUD operations.
+## Contributing
 
-SecureStore persists the logged‑in user and metadata across app restarts.
+We welcome:
 
-All authentication logic is centralized in the useAuth hook.
+- Bug reports
+- Feature suggestions
+- Pull requests
+- RTL improvements
+- AI enhancements
+- Backend adapters
 
-How it works
-On app start, useAuth attempts to load a user from SecureStore and the mock session.
+### Contribution Steps
 
-Registration creates a new user object, stores it in the mock DB and SecureStore.
+1. Fork the repository  
+2. Create a feature branch  
+3. Commit your changes  
+4. Open a Pull Request  
 
-Login verifies credentials against the mock DB and saves the user.
+---
 
-Profile updates modify both the mock DB and SecureStore.
+## Contact
 
-Logout clears the stored user.
+📧 Email: feliksy810@gmail.com  
+🐙 GitHub: https://github.com/wassdd18  
 
-This pattern makes it trivial to replace the mock with a real backend: just update the functions in hooks/lib/auth.js to call your actual API.
-
-
-------------------------------------------------------------------------------------------------------
-📚 Documentation
-For detailed guidance on using the components, hooks, and customizing the AI prompts, please visit our Documentation Site (placeholder).
-
-Key resources:
-
-Getting Started Guide – step‑by‑step tutorial to build your own app from this template.
-
-Hooks API Reference – detailed description of useAuth, useGPToss, useTheme, etc.
-
-UI Component Catalog – interactive showcase of all reusable components.
-
-
-------------------------------------------------------------------------------------------------------
-🛣️ Future Roadmap
-Version 2.0 (Planned)
-📱[x] Offline mode – cache translations and explanations for offline use
-
-📊 [] User history – save translation and explanation history in SecureStore
-
-🗣️ [] Text‑to‑speech – hear pronunciation of translated text (Arabic/Hebrew support)
-
-🌍 [x] Real backend integration – official Appwrite or Firebase adapter
-
-Version 3.0 (Vision)
-🤖 [] Customizable AI models – switch between Hugging Face, OpenAI, or local models
-
-📚 [] Interactive quizzes – generate quizzes from explained concepts
-
-👥 [] Collaborative features – share translations and explanations with friends
-
-We welcome community input! Feel free to open issues or pull requests with your ideas.
-
-
-------------------------------------------------------------------------------------------------------
-🤝 Feedback and Contributions
-We’ve built BiConnect to be a solid foundation for educational apps, but the journey doesn’t end here. Your feedback is crucial for continuous improvement.
-
-Ways to contribute:
-
-🐛 Report bugs or suggest features via GitHub Issues
-
-💡 Start a discussion to share ideas
-
-🔀 Submit pull requests with enhancements or fixes
-
-We especially appreciate contributions that improve RTL language support, add new AI capabilities, or simplify the authentication flow.
-
-------------------------------------------------------------------------------------------------------
-🗨️ Contacts
-For questions, support, or just to say hello:
-
-Email: feliksy810@gmail.com
-
-GitHub: wassdd18
-
-Project Repository: meet_project on GitHub
+---
 
 Made with ❤️ for the MEET community
